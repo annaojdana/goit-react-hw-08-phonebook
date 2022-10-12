@@ -2,8 +2,8 @@ import { useRef, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useDispatch } from 'react-redux'
-import { setCredentials } from './authSlice'
-import { useLoginMutation } from './authApiSlice'
+import { setCredentials } from '../../redux/slices/auth/authSlice'
+import { useLoginMutation } from '../../redux/slices/auth/authApi'
 
 const Login = () => {
     const userRef = useRef()
