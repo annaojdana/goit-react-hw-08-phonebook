@@ -5,6 +5,7 @@ import Login from './Login/Login';
 import Welcome from './Welcome/Welcome';
 import RequireAuth from './RequireAuth/RequireAuth';
 import ContactList from './ContactList/ContactList';
+import NotFound from './NotFound/NotFound';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         {/* public routes */}
         <Route index element={<PublicLayout />} />
         <Route path="login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
 
         {/* protected routes */}
         <Route element={<RequireAuth />}>
