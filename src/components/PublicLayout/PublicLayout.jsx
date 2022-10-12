@@ -23,7 +23,6 @@ const PublicLayout = () => {
         </address>
       </main>
       <footer>
-        <Link to="/login">Login</Link>
       </footer>
     </section>
   );

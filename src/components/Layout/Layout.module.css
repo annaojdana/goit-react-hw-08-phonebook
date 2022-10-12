@@ -1,6 +1,6 @@
 .wrapper {
   max-width: 600px;
-  margin: 100px auto;
+  margin: 30px auto;
   border-radius: 8px;
   background-color: #fff;
   box-shadow: 7px 7px 18px -3px rgba(66, 68, 90, 0.35);
@@ -16,17 +16,24 @@
   box-shadow: 0 5px 8px 0 rgb(79 90 93 / 8%);
 }
 .nav {
-  padding: 0 20px;
+  padding: 0 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .link {
-  font-size: 30px;
+  font-size: 25px;
   color: #373537;
   text-decoration: none;
   font-weight: 600;
 }
+.links{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  flex-wrap: wrap;
+}
+
 main {
   padding: 25px;
 }

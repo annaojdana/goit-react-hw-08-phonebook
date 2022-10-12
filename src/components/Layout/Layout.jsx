@@ -7,7 +7,8 @@ const StyledLink = styled(NavLink)`
   color: #373537;
   text-decoration: none;
   font-weight: 600;
-  margin-left: 40px;
+  margin-left: 15px;
+  line-height: 1.5;
   &::after {
     position: absolute;
     left: 0;
@@ -18,16 +19,16 @@ const StyledLink = styled(NavLink)`
   }
   &:hover {
     &::after {
-      background-color: #e4007e;
+      background-color: mediumaquamarine;
     }
   }
   &.active {
-    color: #e4007e;
+    color: mediumaquamarine;
   }
 `;
 
 const Layout = () => {
-  const { wrapper, header, nav, link } = styles;
+  const { wrapper, header, nav, link, links } = styles;
   return (
     <>
       <div className={wrapper}>
@@ -36,9 +37,9 @@ const Layout = () => {
             <Link className={link} to="/">
               Phonebook
             </Link>
-            <div>
-              <StyledLink to="/movies">Log in</StyledLink>
-              <StyledLink to="/movies">Sign in</StyledLink>
+            <div className={links}>
+              <StyledLink to="/login">Log in</StyledLink>
+              <StyledLink to="/register">Sign in</StyledLink>
             </div>
           </nav>
         </header>
