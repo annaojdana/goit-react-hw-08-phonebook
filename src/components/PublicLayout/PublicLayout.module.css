@@ -1,0 +1,25 @@
+.heading {
+  font-size: 25px;
+  color: #373537;
+  font-weight: 600;
+}
+.links {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  flex-wrap: wrap;
+}
+
+.description {
+  padding: 15px 0;
+  line-height: 1.5;
+}
+.presentation {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.photo{
+  width: 100px;
+  border-radius: 8px;
+}
