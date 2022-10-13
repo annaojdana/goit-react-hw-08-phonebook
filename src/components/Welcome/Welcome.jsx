@@ -1,21 +1,18 @@
 import { useDispatch } from 'react-redux';
-import { logOut } from 'redux/auth/operations';
-import { useAuth } from 'hooks';
+import { logOut } from '../../redux/auth/authOperations';
+import { useAuth } from '../../hooks/useAuth';
 
 const Welcome = () => {
-  const user = useSelector(selectCurrentUser);
-  const token = useSelector(selectCurrentToken);
+  const dispatch = useDispatch();
 
-  const welcome = user ? `Welcome ${user}!` : 'Welcome!';
-  const tokenAbbr = `${token.slice(0, 9)}...`;
+  const { user } = useAuth();
 
   const content = (
     <section className="welcome">
-      <h1>{welcome}</h1>
-      <p>Token: {tokenAbbr}</p>
-      <p>
-        <Link to="/userslist">Go to the Users List</Link>
-      </p>
+      <h1>{`Welcome ${user.name}`}</h1>
+      <button type="button" onClick={() => dispatch(logOut())}>
+        Logout
+      </button>
     </section>
   );
 

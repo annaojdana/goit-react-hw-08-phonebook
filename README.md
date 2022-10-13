@@ -18,31 +18,6 @@ Zadanie zostało wykonane według [kryteriów](https://github.com/goitacademy/re
 Created by [Anna Ojdana](https://pl.linkedin.com/in/anna-ojdana)
 
 
-### Update `components/UserMenu.jsx`
-
-- Add a dispatch action `logout`
-
-jsx
-// components/UserMenu.jsx
-import { useDispatch } from "react-redux";
-import { logOut } from "redux/auth/operations";
-import { useAuth } from "hooks";
-import css from "./UserMenu.module.css";
-
-export const UserMenu = () => {
-  const dispatch = useDispatch();
-  const { user } = useAuth();
-
-  return (
-    <div className={css.wrapper}>
-      <p className={css.username}>Welcome, {user.name}</p>
-      <button type="button" onClick={() => dispatch(logOut())}>
-        Logout
-      </button>
-    </div>
-  );
-};
-
 ## Create Private and Restricted Routes
 
 ### Add `PrivateRoute.js`
