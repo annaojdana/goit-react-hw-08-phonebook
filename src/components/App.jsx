@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import PublicLayout from './PublicLayout/PublicLayout';
 import Login from './Login/Login';
+import Register from './Register/Register';
 import Welcome from './Welcome/Welcome';
 import RequireAuth from './RequireAuth/RequireAuth';
 import ContactList from './ContactList/ContactList';
@@ -14,6 +15,7 @@ function App() {
         {/* public routes */}
         <Route index element={<PublicLayout />} />
         <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
 
         {/* protected routes */}

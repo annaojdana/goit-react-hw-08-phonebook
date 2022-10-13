@@ -39,7 +39,7 @@ const Layout = () => {
             </Link>
             <div className={links}>
               <StyledLink to="/login">Log in</StyledLink>
-              <StyledLink to="/register">Sign in</StyledLink>
+              <StyledLink to="/register">Sign up</StyledLink>
             </div>
           </nav>
         </header>
