@@ -1,10 +1,10 @@
-
 import styles from './PublicLayout.module.css';
 import myPhoto from './anna_ojdana_profile.jpg';
 import { IoLogoLinkedin, IoLogoGithub } from 'react-icons/io';
 
 const PublicLayout = () => {
-  const { heading, description, presentation, photo } = styles;
+  const { heading, description, presentation, photo, linkedin, github, info } =
+    styles;
 
   const content = (
     <section className="public">
@@ -12,31 +12,39 @@ const PublicLayout = () => {
       <p className={description}>
         This app was made during my learning react and redux. It allows you to
         register and keep your contacts.
+        <a
+          className={github}
+          href="https://github.com/annaojdana/goit-react-hw-08-phonebook"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <IoLogoGithub />
+          Application code
+        </a>
       </p>
 
       <div className={presentation}>
         <div>
-          <img
-            className={photo}
-            src={myPhoto}
-            alt="The creator of the application"
-          />
+          <a
+            className={linkedin}
+            href="https://www.linkedin.com/in/anna-ojdana/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <IoLogoLinkedin />
+            <img
+              className={photo}
+              src={myPhoto}
+              alt="The creator of the application"
+            />
+          </a>
         </div>
-        <div>
+        <div className={info}>
           <p className={description}>
             Hi, my name is Ania and I'm a Junior React Developer
           </p>
-          <p> Contact: </p>
-          <a href="https://www.linkedin.com/in/anna-ojdana/">
-            <IoLogoLinkedin />
-          </a>
-          <a href="https://github.com/annaojdana/goit-react-hw-08-phonebook">
-            <IoLogoGithub />
-          </a>
         </div>
       </div>
-
-      <footer></footer>
     </section>
   );
   return content;
