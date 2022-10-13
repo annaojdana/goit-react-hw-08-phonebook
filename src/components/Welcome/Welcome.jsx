@@ -1,9 +1,6 @@
-import { useSelector } from 'react-redux';
-import {
-  selectCurrentUser,
-  selectCurrentToken,
-} from '../../redux/auth/authSlice';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logOut } from 'redux/auth/operations';
+import { useAuth } from 'hooks';
 
 const Welcome = () => {
   const user = useSelector(selectCurrentUser);
