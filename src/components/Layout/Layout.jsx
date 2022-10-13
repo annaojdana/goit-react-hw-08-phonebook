@@ -1,4 +1,7 @@
 import { Outlet, NavLink, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useAuth } from '../../hooks/useAuth';
+import { logOut } from 'redux/auth/authOperations';
 import styled from 'styled-components';
 import styles from './Layout.module.css';
 
@@ -29,6 +32,10 @@ const StyledLink = styled(NavLink)`
 
 const Layout = () => {
   const { wrapper, header, nav, link, links, main } = styles;
+
+  const { isLoggedIn } = useAuth();
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className={wrapper}>
@@ -37,10 +44,18 @@ const Layout = () => {
             <Link className={link} to="/">
               Phonebook
             </Link>
-            <div className={links}>
-              <StyledLink to="/login">Log in</StyledLink>
-              <StyledLink to="/register">Sign up</StyledLink>
-            </div>
+            {isLoggedIn ? (
+              <div className={links}>
+                <button type="button" onClick={() => dispatch(logOut())}>
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className={links}>
+                <StyledLink to="/login">Log in</StyledLink>
+                <StyledLink to="/register">Sign up</StyledLink>
+              </div>
+            )}
           </nav>
         </header>
         <main className={main}>
