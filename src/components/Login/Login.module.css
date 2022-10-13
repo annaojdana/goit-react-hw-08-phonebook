@@ -1,0 +1,18 @@
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+.label {
+  margin-bottom: 5px;
+}
+.input {
+  border-radius: 8px;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border: solid 1px #373537;
+  outline: transparent;
+  transition: all 0.25s;
+}
+.input:focus {
+  border: solid 1px mediumaquamarine;
+}

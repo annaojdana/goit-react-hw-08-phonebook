@@ -32,3 +32,9 @@ h6 {
   margin: 0;
 }
 
+h1 {
+  font-size: 25px;
+  color: #373537;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
