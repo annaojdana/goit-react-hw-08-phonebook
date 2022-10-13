@@ -8,6 +8,7 @@
 .input {
   border-radius: 8px;
   margin-bottom: 10px;
+  font-size: 14px;
   padding: 8px 10px;
   border: solid 1px #373537;
   outline: transparent;
@@ -15,4 +16,30 @@
 }
 .input:focus {
   border: solid 1px mediumaquamarine;
+}
+
+.btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px;
+  background-color: mediumaquamarine;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.25ms;
+}
+
+.btn:hover,
+.btn:focus {
+  color: mintcream;
+}
+
+@media screen and (min-width: 768px) {
+  .btn,
+  .input {
+    font-size: 16px;
+  }
 }

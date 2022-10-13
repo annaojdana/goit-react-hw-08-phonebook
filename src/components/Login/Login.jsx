@@ -8,7 +8,7 @@ import { useLoginMutation } from '../../redux/slices/auth/authApi';
 import styles from './Login.module.css';
 
 const Login = () => {
-  const { loginForm, label, input } = styles;
+  const { loginForm, label, input, btn } = styles;
 
   const userRef = useRef();
   const errRef = useRef();
@@ -96,7 +96,7 @@ const Login = () => {
           value={pwd}
           required
         />
-        <button>Sign In</button>
+        <button className={btn}>Sign In</button>
       </form>
     </section>
   );
