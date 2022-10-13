@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+
 import styles from './PublicLayout.module.css';
 import myPhoto from './anna_ojdana_profile.jpg';
 import { IoLogoLinkedin, IoLogoGithub } from 'react-icons/io';
@@ -19,7 +19,7 @@ const PublicLayout = () => {
           <img
             className={photo}
             src={myPhoto}
-            alt="profile photo of the creator of the application"
+            alt="The creator of the application"
           />
         </div>
         <div>

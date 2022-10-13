@@ -28,7 +28,7 @@ const StyledLink = styled(NavLink)`
 `;
 
 const Layout = () => {
-  const { wrapper, header, nav, link, links } = styles;
+  const { wrapper, header, nav, link, links, main } = styles;
   return (
     <>
       <div className={wrapper}>
@@ -43,7 +43,7 @@ const Layout = () => {
             </div>
           </nav>
         </header>
-        <main>
+        <main className={main}>
           <Outlet />
         </main>
       </div>
