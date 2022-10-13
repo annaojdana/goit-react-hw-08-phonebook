@@ -2,8 +2,8 @@ import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
-import { setCredentials } from '../../redux/slices/auth/authSlice';
-import { useLoginMutation } from '../../redux/slices/auth/authApi';
+import { setCredentials } from '../../redux/auth/authSlice';
+import { useLoginMutation } from '../../redux/auth/authApi';
 
 import styles from './Login.module.css';
 

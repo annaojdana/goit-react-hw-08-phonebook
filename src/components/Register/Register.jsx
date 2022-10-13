@@ -1,90 +1,41 @@
-import { useRef, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-
 import { useDispatch } from 'react-redux';
-import { setCredentials } from '../../redux/slices/auth/authSlice';
-import { useLoginMutation } from '../../redux/slices/auth/authApi';
+
+import { register } from 'redux/auth/operations';
 
 import styles from './Register.module.css';
 
-const Login = () => {
+const Register = () => {
   const { loginForm, label, input, btn } = styles;
 
-  const userRef = useRef();
-  const errRef = useRef();
-  const [user, setUser] = useState('');
-  const [pwd, setPwd] = useState('');
-  const [errMsg, setErrMsg] = useState('');
-  const navigate = useNavigate();
-
-  const [login, { isLoading }] = useLoginMutation();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    userRef.current.focus();
-  }, []);
-
-  useEffect(() => {
-    setErrMsg('');
-  }, [user, pwd]);
-
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
-
-    try {
-      const userData = await login({ user, pwd }).unwrap();
-      dispatch(setCredentials({ ...userData, user }));
-      setUser('');
-      setPwd('');
-      navigate('/welcome');
-    } catch (err) {
-      if (!err?.originalStatus) {
-        // isLoading: true until timeout occurs
-        setErrMsg('No Server Response');
-      } else if (err.originalStatus === 400) {
-        setErrMsg('Missing Username or Password');
-      } else if (err.originalStatus === 401) {
-        setErrMsg('Unauthorized');
-      } else {
-        setErrMsg('Login Failed');
-      }
-      errRef.current.focus();
-    }
+    const form = e.currentTarget.form;
+    const { name, email, password } = form.elements;
+    dispatch(
+      register({
+        name: name.value,
+        email: email.value,
+        password: password.value,
+      })
+    );
+    form.reset();
   };
 
-  const handleUserInput = e => setUser(e.target.value);
-
-  const handlePwdInput = e => setPwd(e.target.value);
-
-  const content = isLoading ? (
-    <h1>Loading...</h1>
-  ) : (
+  const content = (
     <section>
-      <p
-        ref={errRef}
-        className={errMsg ? 'errmsg' : 'offscreen'}
-        aria-live="assertive"
-      >
-        {errMsg}
-      </p>
-
       <h1>Register</h1>
 
       <form className={loginForm} onSubmit={handleSubmit}>
         <label className={label} htmlFor="username">
           Username
         </label>
-        <input
-          className={input}
-          type="text"
-          id="username"
-          ref={userRef}
-          value={user}
-          onChange={handleUserInput}
-          autoComplete="off"
-          required
-        />
-
+        <input className={input} type="text" name="name" id="username" />
+        <label className={label} htmlFor="email">
+          Email
+        </label>
+        <input className={input} type="email" name="name" id="email" />
         <label className={label} htmlFor="password">
           Password
         </label>
@@ -92,26 +43,16 @@ const Login = () => {
           className={input}
           type="password"
           id="password"
-          onChange={handlePwdInput}
-          value={pwd}
-          required
+          name="password"
         />
-        <label className={label} htmlFor="confirmPassword">
-          Confirm password
-        </label>
-        <input
-          className={input}
-          type="password"
-          id="confirmPassword"
-          onChange={handlePwdInput}
-          value={pwd}
-          required
-        />
-        <button className={btn}>Sign Up</button>
+
+        <button className={btn} type="submit">
+          Sign Up
+        </button>
       </form>
     </section>
   );
-
   return content;
 };
-export default Login;
+
+export default Register;
