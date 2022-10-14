@@ -2,6 +2,7 @@ import { Outlet, NavLink, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useAuth } from '../../hooks/useAuth';
 import { logOut } from 'redux/auth/authOperations';
+import { Suspense } from 'react';
 import styled from 'styled-components';
 import styles from './Layout.module.css';
 
@@ -59,7 +60,9 @@ const Layout = () => {
           </nav>
         </header>
         <main className={main}>
-          <Outlet />
+          <Suspense fallback={null}>
+            <Outlet />
+          </Suspense>
         </main>
       </div>
     </>

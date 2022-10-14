@@ -11,8 +11,12 @@ const Register = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const form = e.currentTarget.form;
+
+    const form = e.target;
     const { name, email, password } = form.elements;
+    console.log(name.value);
+    console.log(email.value);
+    console.log(password.value);
     dispatch(
       register({
         name: name.value,
@@ -35,7 +39,7 @@ const Register = () => {
         <label className={label} htmlFor="email">
           Email
         </label>
-        <input className={input} type="email" name="name" id="email" />
+        <input className={input} type="email" name="email" id="email" />
         <label className={label} htmlFor="password">
           Password
         </label>
