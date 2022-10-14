@@ -34,7 +34,7 @@ const StyledLink = styled(NavLink)`
 const Layout = () => {
   const { wrapper, header, nav, link, links, main } = styles;
 
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, user } = useAuth();
   const dispatch = useDispatch();
 
   return (
@@ -47,6 +47,7 @@ const Layout = () => {
             </Link>
             {isLoggedIn ? (
               <div className={links}>
+                <p>{ `Welcome ${user.name}`}</p>
                 <button type="button" onClick={() => dispatch(logOut())}>
                   Logout
                 </button>

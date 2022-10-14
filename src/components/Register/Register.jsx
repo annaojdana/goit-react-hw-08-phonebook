@@ -2,12 +2,14 @@ import { useDispatch } from 'react-redux';
 
 import { register } from '../../redux/auth/authOperations';
 
+
 import styles from './Register.module.css';
 
 const Register = () => {
   const { loginForm, label, input, btn } = styles;
 
   const dispatch = useDispatch();
+
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -39,7 +41,14 @@ const Register = () => {
         <label className={label} htmlFor="email">
           Email
         </label>
-        <input className={input} type="email" name="email" id="email" />
+        <input
+          className={input}
+          type="email"
+          name="email"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          autoComplete="email"
+          id="email"
+        />
         <label className={label} htmlFor="password">
           Password
         </label>
@@ -47,6 +56,8 @@ const Register = () => {
           className={input}
           type="password"
           id="password"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          title="Must contain at least one uppercase and lowercase letter, one number and at least 8 or more characters"
           name="password"
         />
 

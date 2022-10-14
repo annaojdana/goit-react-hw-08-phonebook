@@ -1,16 +1,18 @@
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import  Layout  from './Layout/Layout';
+import Layout from './Layout/Layout';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 import { refreshUser } from 'redux/auth/authOperations';
 import { useAuth } from 'hooks/useAuth';
 
-const PublicLayout = lazy(() => import('../components/PublicLayout/PublicLayout'));
+const PublicLayout = lazy(() =>
+  import('../components/PublicLayout/PublicLayout')
+);
 const Register = lazy(() => import('../components/Register/Register'));
 const Login = lazy(() => import('../components/Login/Login'));
-const ContactsList = lazy(() => import('../components/ContactList/ContactList'));
+const ContactsPage = lazy(() => import('pages/ContactsPage/ContactsPage'));
 
 function App() {
   const dispatch = useDispatch();
@@ -41,7 +43,7 @@ function App() {
         <Route
           path="/contacts"
           element={
-            <PrivateRoute redirectTo="/login" component={<ContactsList />} />
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
           }
         />
       </Route>
