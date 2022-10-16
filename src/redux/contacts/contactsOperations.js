@@ -35,7 +35,6 @@ export const addContact = createAsyncThunk(
   "contacts/addContact", async ({ name, number }, thunkAPI) => {
     const stateContacts = thunkAPI.getState().contacts.items;
     if (isIncludes(name, stateContacts)) {
-      toast.error(`${name} is already in contacts`);
       return thunkAPI.rejectWithValue(`${name} is already in contacts`);
     }
 
