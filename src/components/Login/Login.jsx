@@ -29,12 +29,26 @@ const Login = () => {
         <label className={label} htmlFor="email">
           Email
         </label>
-        <input className={input} type="email" id="email" />
+        <input
+          className={input}
+          type="email"
+          name="email"
+          id="email"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          autoComplete="email"
+        />
 
         <label className={label} htmlFor="password">
           Password
         </label>
-        <input className={input} type="password" id="password" />
+        <input
+          className={input}
+          type="password"
+          id="password"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          title="Must contain at least one uppercase and lowercase letter, one number and at least 8 or more characters"
+          name="password"
+        />
         <button className={btn} type="submit">
           Sign In
         </button>
@@ -43,6 +57,5 @@ const Login = () => {
   );
   return content;
 };
-
 
 export default Login;
