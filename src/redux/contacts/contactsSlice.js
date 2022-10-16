@@ -5,7 +5,7 @@ const handlePending = state => {
   state.isLoading = true;
 };
 
-const handleRejected = (state, {payload}) => {
+const handleRejected = (state, { payload }) => {
   state.isLoading = false;
   state.error = payload;
 };
@@ -19,13 +19,13 @@ export const contactsSlice = createSlice({
     filter: '',
   },
   reducers: {
-    filterContacts(state, {payload}) {
+    filterContacts(state, { payload }) {
       state.filter = payload;
     },
   },
   extraReducers: {
     [fetchContacts.pending]: handlePending,
-    [fetchContacts.fulfilled](state,{payload}) {
+    [fetchContacts.fulfilled](state, { payload }) {
       state.isLoading = false;
       state.error = null;
       state.items = payload;
@@ -33,7 +33,7 @@ export const contactsSlice = createSlice({
     [fetchContacts.rejected]: handleRejected,
 
     [addContact.pending]: handlePending,
-    [addContact.fulfilled](state, {payload}) {
+    [addContact.fulfilled](state, { payload }) {
       state.isLoading = false;
       state.error = null;
       state.items = [...state.items, payload];
@@ -42,7 +42,6 @@ export const contactsSlice = createSlice({
 
     [deleteContact.pending]: handlePending,
     [deleteContact.fulfilled](state, { payload }) {
-      console.log(payload);
       state.isLoading = false;
       state.error = null;
       const index = state.items.findIndex(c => c.id === payload);
