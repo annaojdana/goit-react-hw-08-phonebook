@@ -1,47 +1,18 @@
 import styles from './ContactForm.module.css';
 import { Button } from 'components/Button/Button';
 import React from 'react';
-import {
-  useGetContactsQuery,
-  useAddContactMutation,
-} from 'services/contactsApi';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/contacts/contactsOperations';
 
 const ContactForm = () => {
   const { form, form__field, label, input } = styles;
 
-  const { data: contacts = [] } = useGetContactsQuery();
-  const [addContact, { isLoading }] = useAddContactMutation();
+  const dispatch = useDispatch();
 
-  const onSubmit = async e => {
-    e.preventDefault();
-
-    const form = e.target;
-    const name = form.name.value;
-    const number = form.number.value;
-
-    if (contacts.some(contact => contact.name === name)) {
-      alert(`${name} is already in contacts`);
-      return;
-    }
-
-    if (contacts.some(contact => contact.phone === number)) {
-      const [filteredNumber] = contacts.filter(
-        contact => contact.phone === number
-      );
-      alert(`${number} is already in contact with ${filteredNumber.name} `);
-      return;
-    }
-
-    try {
-      await addContact({
-        name,
-        phone: number,
-      });
-    } catch (error) {
-      alert(`Failed to save the contact`);
-    }
-    form.reset();
+  const onSubmit = values => {
+    dispatch(addContact(values));
   };
+
 
   return (
     <form className={form} onSubmit={onSubmit}>
@@ -75,7 +46,7 @@ const ContactForm = () => {
       </div>
       <Button
         type="submit"
-        title={isLoading ? 'Adding...' : 'Add contact'}
+        title= 'Add contact'
       ></Button>
     </form>
   );
