@@ -43,11 +43,12 @@ const Layout = () => {
         <header className={header}>
           <nav className={nav}>
             <Link className={link} to="/">
-              Phonebook
-            </Link>
+              Home
+            </Link>{' '}
+            {isLoggedIn && <Link to="/contacts">Contacts</Link>}
             {isLoggedIn ? (
               <div className={links}>
-                <p>{ `Welcome ${user.name}`}</p>
+                <p>{`Welcome ${user.name}`}</p>
                 <button type="button" onClick={() => dispatch(logOut())}>
                   Logout
                 </button>
