@@ -48,6 +48,7 @@ const Login = () => {
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
           title="Must contain at least one uppercase and lowercase letter, one number and at least 8 or more characters"
           name="password"
+          autoComplete="password"
         />
         <button className={btn} type="submit">
           Sign In

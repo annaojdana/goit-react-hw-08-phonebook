@@ -3,6 +3,7 @@ import { Notification } from 'components/Notification/Notification';
 import { useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
+import { FiDelete } from 'react-icons/fi';
 import { selectContacts, selectFilter } from 'redux/contacts/contactsSelectors';
 import { deleteContact } from 'redux/contacts/contactsOperations';
 
@@ -33,7 +34,7 @@ const ContactList = () => {
                   className={button}
                   onClick={() => dispatch(deleteContact(contact.id))}
                 >
-                  Delete
+                 < FiDelete/>
                 </button>
               </li>
             );

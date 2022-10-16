@@ -1,6 +1,6 @@
 import { Outlet, NavLink, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from 'hooks';
 import { logOut } from 'redux/auth/authOperations';
 import { Suspense } from 'react';
 import styled from 'styled-components';
