@@ -1,14 +1,19 @@
 import styles from './PublicLayout.module.css';
 import myPhoto from './anna_ojdana_profile.jpg';
 import { IoLogoLinkedin, IoLogoGithub } from 'react-icons/io';
+import { useAuth } from 'hooks';
 
 const PublicLayout = () => {
   const { heading, description, presentation, photo, linkedin, github, info } =
     styles;
+  const { isLoggedIn, user } = useAuth();
 
   const content = (
     <section className="public">
-      <h1 className={heading}>Welcome to my Phonebook App</h1>
+      <h1 className={heading}>
+        Welcome <span>{isLoggedIn ? `${String(user.name)} ` : ''}</span>
+        to my Phonebook App
+      </h1>
       <p className={description}>
         This app was made during my learning react and redux. It allows you to
         register and keep your contacts.

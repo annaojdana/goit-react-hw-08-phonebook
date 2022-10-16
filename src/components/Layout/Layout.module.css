@@ -19,15 +19,15 @@
   padding: 0 15px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
 .link {
-  font-size: 25px;
+  font-size: 22px;
   color: #373537;
   text-decoration: none;
   font-weight: 600;
 }
-.links{
+.links {
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -36,4 +36,10 @@
 
 .main {
   padding: 25px;
+}
+.btn {
+  background-color: transparent;
+  border: none;
+  color: #000000;
+  padding: 0;
 }

@@ -4,6 +4,9 @@
   font-weight: 600;
   margin-bottom: 20px;
 }
+.heading span {
+  color: mediumaquamarine;
+}
 .links {
   width: 100%;
   display: flex;

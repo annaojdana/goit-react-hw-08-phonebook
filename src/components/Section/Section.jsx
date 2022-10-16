@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const Section = ({ title, children }) => {
-  const { heading } = styles;
+  const { heading, wrapper } = styles;
 
   return (
-    <section>
+    <section className={wrapper}>
       <h2 className={heading}>{title}</h2>
       {children}
     </section>

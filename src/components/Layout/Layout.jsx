@@ -1,5 +1,6 @@
 import { Outlet, NavLink, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { IoIosLogOut } from 'react-icons/io';
 import { useAuth } from 'hooks';
 import { logOut } from 'redux/auth/authOperations';
 import { Suspense } from 'react';
@@ -12,7 +13,7 @@ const StyledLink = styled(NavLink)`
   text-decoration: none;
   font-weight: 600;
   margin-left: 15px;
-  line-height: 1.5;
+  line-height: 1.25;
   &::after {
     position: absolute;
     left: 0;
@@ -32,9 +33,9 @@ const StyledLink = styled(NavLink)`
 `;
 
 const Layout = () => {
-  const { wrapper, header, nav, link, links, main } = styles;
+  const { wrapper, header, nav, link, links, main, btn } = styles;
 
-  const { isLoggedIn, user } = useAuth();
+  const { isLoggedIn } = useAuth();
   const dispatch = useDispatch();
 
   return (
@@ -44,13 +45,16 @@ const Layout = () => {
           <nav className={nav}>
             <Link className={link} to="/">
               Home
-            </Link>{' '}
-            {isLoggedIn && <Link to="/contacts">Contacts</Link>}
+            </Link>
+            {isLoggedIn && <StyledLink to="/contacts">Contacts</StyledLink>}
             {isLoggedIn ? (
               <div className={links}>
-                <p>{`Welcome ${user.name}`}</p>
-                <button type="button" onClick={() => dispatch(logOut())}>
-                  Logout
+                <button
+                  className={btn}
+                  type="button"
+                  onClick={() => dispatch(logOut())}
+                >
+                  <IoIosLogOut />
                 </button>
               </div>
             ) : (

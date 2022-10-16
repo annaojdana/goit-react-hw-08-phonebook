@@ -8,10 +8,13 @@ import Filter from '../../components/Filter/Filter';
 import { selectIsLoading } from 'redux/contacts/contactsSelectors';
 import { fetchContacts } from 'redux/contacts/contactsOperations';
 import Loader from 'components/Loader/Loader';
+import { useAuth } from 'hooks';
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
+
+  const { user } = useAuth();
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -19,10 +22,10 @@ const ContactsPage = () => {
 
   return (
     <>
-      <Section title="Phonebook">
+      <Section title={`Welcome ${user.name} in your phonebook`}>
         <ContactForm />
       </Section>
-      <Section title="Contacts">
+      <Section title="Your contacts">
         <>
           <Filter />
           {isLoading ? <Loader /> : <ContactList />}
