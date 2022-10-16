@@ -21,6 +21,7 @@ const ContactList = () => {
   const filter = useSelector(selectFilter);
 
   const filteredContacts = useMemo(() => {
+    console.log(contacts);
     return contacts.filter(c => c.name.toLowerCase().includes(filter));
   }, [contacts, filter]);
 

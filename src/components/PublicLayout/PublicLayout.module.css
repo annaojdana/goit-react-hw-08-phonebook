@@ -64,3 +64,19 @@
 .github:hover.github::after {
   background-color: mediumaquamarine;
 }
+.demo {
+  padding-top: 15px;
+  position: relative;
+  background-color: transparent;
+  border:none
+}
+.demo::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0.8px;
+  background-color: mediumaquamarine;
+  transition: background-color 0.25s;
+}

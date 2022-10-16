@@ -1,12 +1,25 @@
 import styles from './PublicLayout.module.css';
 import myPhoto from './anna_ojdana_profile.jpg';
 import { IoLogoLinkedin, IoLogoGithub } from 'react-icons/io';
+import { useDispatch } from 'react-redux';
+import { logIn } from '../../redux/auth/authOperations';
 import { useAuth } from 'hooks';
 
 const PublicLayout = () => {
-  const { heading, description, presentation, photo, linkedin, github, info } =
+  const { heading, description, presentation, photo, linkedin, github, info, demo } =
     styles;
+
+  const dispatch = useDispatch();
   const { isLoggedIn, user } = useAuth();
+
+  const logInDemoUser = () => {
+   dispatch(
+      logIn({
+        email: "demo@user.com",
+        password: "Demo12345",
+      })
+    );
+}
 
   const content = (
     <section className="public">
@@ -27,7 +40,14 @@ const PublicLayout = () => {
           Application code
         </a>
       </p>
-
+      {!isLoggedIn && (
+        <button
+          className={demo}
+          onClick={() => logInDemoUser()}
+        >
+          You can login as demo user
+        </button>
+      )}
       <div className={presentation}>
         <div>
           <a

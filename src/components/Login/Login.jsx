@@ -51,7 +51,7 @@ const Login = () => {
           autoComplete="password"
         />
         <button className={btn} type="submit">
-          Sign In
+          Log In
         </button>
       </form>
     </section>
