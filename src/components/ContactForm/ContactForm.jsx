@@ -9,10 +9,18 @@ const ContactForm = () => {
 
   const dispatch = useDispatch();
 
-  const onSubmit = values => {
-    dispatch(addContact(values));
-  };
+  const onSubmit = e => {
+    e.preventDefault();
+    const form = e.target;
+    const values = {
+      name: form.name.value,
+      number: form.number.value,
+    };
 
+    dispatch(addContact(values));
+
+    form.reset();
+  };
 
   return (
     <form className={form} onSubmit={onSubmit}>
@@ -44,10 +52,7 @@ const ContactForm = () => {
           required
         />
       </div>
-      <Button
-        type="submit"
-        title= 'Add contact'
-      ></Button>
+      <Button type="submit" title="Add contact"></Button>
     </form>
   );
 };

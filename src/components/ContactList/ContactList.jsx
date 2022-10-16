@@ -4,14 +4,20 @@ import { useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { FiDelete } from 'react-icons/fi';
-import { selectContacts, selectFilter } from 'redux/contacts/contactsSelectors';
+import {
+  selectContacts,
+  selectFilter,
+  selectIsLoading,
+} from 'redux/contacts/contactsSelectors';
 import { deleteContact } from 'redux/contacts/contactsOperations';
+import Loader from 'components/Loader/Loader';
 
 const ContactList = () => {
   const { wrapper, text, button } = styles;
 
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectIsLoading);
   const filter = useSelector(selectFilter);
 
   const filteredContacts = useMemo(() => {
@@ -20,21 +26,23 @@ const ContactList = () => {
 
   return (
     <>
-      {filteredContacts.length !== 0 ? (
+      {isLoading ? (
+        <Loader />
+      ) : filteredContacts.length !== 0 ? (
         <ul className={wrapper}>
           {filteredContacts.map(contact => {
             return (
               <li className={text} key={nanoid()}>
                 <span>
                   {`${contact.name}:
-               ${contact.phone}`}
+               ${contact.number}`}
                 </span>
                 <button
                   type="button"
                   className={button}
                   onClick={() => dispatch(deleteContact(contact.id))}
                 >
-                 < FiDelete/>
+                  <FiDelete />
                 </button>
               </li>
             );
