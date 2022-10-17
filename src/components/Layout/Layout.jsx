@@ -1,5 +1,6 @@
 import { Outlet, NavLink, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { IconContext } from 'react-icons';
 import { IoIosLogOut } from 'react-icons/io';
 import { useAuth } from 'hooks';
 import { logOut } from 'redux/auth/authOperations';
@@ -48,15 +49,17 @@ const Layout = () => {
             </Link>
             {isLoggedIn && <StyledLink to="/contacts">Contacts</StyledLink>}
             {isLoggedIn ? (
-              <div className={links}>
-                <button
-                  className={btn}
-                  type="button"
-                  onClick={() => dispatch(logOut())}
-                >
-                  <IoIosLogOut />
-                </button>
-              </div>
+              <IconContext.Provider value={{ size: '25px' }}>
+                <div className={links}>
+                  <button
+                    className={btn}
+                    type="button"
+                    onClick={() => dispatch(logOut())}
+                  >
+                    <IoIosLogOut />
+                  </button>
+                </div>
+              </IconContext.Provider>
             ) : (
               <div className={links}>
                 <StyledLink to="/login">Log in</StyledLink>
