@@ -1,5 +1,7 @@
+import { useAuth } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/auth/authOperations';
+import { Notification } from 'components/Notification/Notification';
 
 import styles from './Login.module.css';
 
@@ -7,7 +9,8 @@ const Login = () => {
   const { loginForm, label, input, btn } = styles;
 
   const dispatch = useDispatch();
-
+  const { error } = useAuth();
+console.log( error);
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -18,13 +21,12 @@ const Login = () => {
         password: password.value,
       })
     );
-    form.reset();
+    !error && form.reset();
   };
 
   const content = (
     <section>
       <h1>Login</h1>
-
       <form className={loginForm} onSubmit={handleSubmit}>
         <label className={label} htmlFor="email">
           Email
