@@ -1,7 +1,6 @@
 import { useAuth } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/auth/authOperations';
-import { Notification } from 'components/Notification/Notification';
 
 import styles from './Login.module.css';
 
